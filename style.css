@@ -1,0 +1,81 @@
+.montserrat-google {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-size: 13px;
+  color: #515076
+}
+
+.title {
+  font-size: 70px;
+  font-weight: 400;
+  line-height: 78px;
+  margin: 0;
+  text-align: center;
+  color: #515076;
+}
+
+.container {
+  flex: 1;
+  max-width: 300px;
+  border: 1px;
+  background-color: #E5E5E5;
+  padding: 20px 20px;
+  text-align: left;
+  border-radius: 4px;
+  margin: 40px;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  list-style-type: none;
+  gap: 20;
+  margin: auto;
+}
+
+.main-text {
+  color: #515076;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: left;
+}
+
+.skin-type {
+  color: #515076;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.product-name{
+  color: #515076;
+  font-size: 20;
+  line-height: 27;
+  font-weight: 700;
+}
+
+.price {
+  color: #515076;
+  font-size: 20;
+  line-height: 24;
+  font-weight: 700;
+}
+
+.price123 {
+  color: #515076;
+  font-size: 20;
+  line-height: 24;
+  font-weight: 400;
+  text-align: right;
+}
+
+.card {
+  background-color: #E5E5E5;
+}
+
