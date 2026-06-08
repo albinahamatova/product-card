@@ -19,7 +19,16 @@ body {
   color: #515076;
 }
 
-.container {
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  list-style-type: none;
+  gap: 20;
+  margin: auto;
+}
+
+.card {
   flex: 1;
   max-width: 300px;
   border: 1px;
@@ -28,15 +37,6 @@ body {
   text-align: left;
   border-radius: 4px;
   margin: 40px;
-}
-
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  list-style-type: none;
-  gap: 20;
-  margin: auto;
 }
 
 .main-text {
@@ -75,7 +75,4 @@ body {
   text-align: right;
 }
 
-.card {
-  background-color: #E5E5E5;
-}
 
