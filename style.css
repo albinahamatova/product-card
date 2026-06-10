@@ -1,11 +1,5 @@
-.montserrat-google {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
 body {
+  font-family: "Montserrat", sans-serif;
   font-size: 13px;
   color: #515076
 }
@@ -14,29 +8,34 @@ body {
   font-size: 70px;
   font-weight: 400;
   line-height: 78px;
-  margin: 0;
   text-align: center;
   color: #515076;
 }
 
 .product-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
-  gap: 20;
   margin: auto;
+  list-style-type: none;
+  max-width: 1550px;
 }
 
 .card {
-  flex: 1;
-  max-width: 300px;
-  border: 1px;
-  background-color: #E5E5E5;
-  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  background-color: #F7F7FA;
+  margin: 45px;
+  padding: 25px;
   text-align: left;
-  border-radius: 4px;
-  margin: 40px;
+}
+
+.card-image{
+width: 290px;
+height: 245px;
+margin: 25px;
 }
 
 .main-text {
@@ -55,24 +54,28 @@ body {
 
 .product-name{
   color: #515076;
-  font-size: 20;
-  line-height: 27;
+  font-size: 20px;
+  line-height: 27px;
   font-weight: 700;
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
 }
 
 .price {
   color: #515076;
-  font-size: 20;
-  line-height: 24;
+  font-size: 20px;
+  line-height: 24px;
   font-weight: 700;
 }
 
 .price123 {
   color: #515076;
-  font-size: 20;
-  line-height: 24;
+  font-size: 20px;
+  line-height: 24px;
   font-weight: 400;
-  text-align: right;
 }
 
 
