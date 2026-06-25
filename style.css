@@ -4,6 +4,11 @@ body {
   color: #515076
 }
 
+.photo-background {
+  background-image: url(images/main-background.png);
+  background-repeat: no-repeat;
+}
+
 .title {
   font-size: 70px;
   font-weight: 400;
@@ -17,9 +22,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
-  margin: auto;
+  margin: 0, auto;
   list-style-type: none;
-  max-width: 1550px;
 }
 
 .card {
@@ -62,6 +66,7 @@ margin: 25px;
 .price-line {
   display: flex;
   justify-content: space-between;
+  margin-top: 25px;
 }
 
 .price {
