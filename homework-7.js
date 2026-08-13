@@ -1,6 +1,6 @@
 function weatherReport(city, temperature) {
   console.log(
-    `Сейчас в ${city} температура — ${temperature} градусов по Цельсию`,
+    `Сейчас в городе ${city} температура — ${temperature} градусов по Цельсию`,
   );
 }
 
