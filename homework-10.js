@@ -1,4 +1,4 @@
-import { products, getProductDescriptions } from "./products-data.js";
+import { products } from "./products-data.js";
 
 const askCardCount = () => {
   let userInput;
@@ -57,27 +57,17 @@ const createCardHTML = (product) => {
 };
 
 const renderCards = (productsToRender) => {
-  const row1 = document.querySelector(".products-row-1");
-  const row2 = document.querySelector(".products-row-2");
+  const container = document.querySelector(".products");
 
-  if (!row1 || !row2) {
-    console.error("Контейнеры для карточек не найдены");
+  if (!container) {
+    console.error("Контейнер для карточек не найден");
     return;
   }
 
-  row1.innerHTML = "";
-  row2.innerHTML = "";
+  container.innerHTML = "";
 
-  const firstRowCount = Math.min(productsToRender.length, 3);
-  const firstRowProducts = productsToRender.slice(0, firstRowCount);
-  const secondRowProducts = productsToRender.slice(firstRowCount);
-
-  firstRowProducts.forEach((product) => {
-    row1.innerHTML += createCardHTML(product);
-  });
-
-  secondRowProducts.forEach((product) => {
-    row2.innerHTML += createCardHTML(product);
+  productsToRender.forEach((product) => {
+    container.innerHTML += createCardHTML(product);
   });
 };
 

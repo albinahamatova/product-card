@@ -59,11 +59,3 @@ export const products = [
     alt: "Подарочный набор №5",
   },
 ];
-
-// Функция для получения краткого описания продукта (название + описание)
-export const getProductDescriptions = (productsArray) => {
-  return productsArray.map((product) => ({
-    name: product.name,
-    description: product.description,
-  }));
-};
