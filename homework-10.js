@@ -25,49 +25,58 @@ const askCardCount = () => {
   return count;
 };
 
-const createCardHTML = (product) => {
+// Функция для создания карточки из шаблона
+const createCardFromTemplate = (product) => {
+  // Находим шаблон
+  const template = document.getElementById("product-card-template");
+  // Клонируем его содержимое
+  const clone = document.importNode(template.content, true);
+
+  // Находим элементы внутри клона
+  const image = clone.querySelector(".card__image");
+  const skinType = clone.querySelector(".card__skin-type");
+  const productName = clone.querySelector(".card__product-name");
+  const description = clone.querySelector(".card__description");
+  const compoundList = clone.querySelector(".card__compound-text");
+  const priceValue = clone.querySelector(".card__price-value");
+
+  // Заполняем данными
+  image.src = product.image;
+  image.alt = product.alt || product.name;
+  skinType.textContent = product.skinType;
+  productName.textContent = product.name;
+  description.textContent = product.description;
+
+  // Заполняем состав
+  compoundList.innerHTML = "";
+  product.compound.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    compoundList.appendChild(li);
+  });
+
+  // Форматируем цену
   const formattedPrice = product.price.toLocaleString("ru-RU");
+  priceValue.textContent = `${formattedPrice} ₽`;
 
-  const compoundItems = product.compound
-    .map((item) => `<li>${item}</li>`)
-    .join("");
-
-  return `
-    <li class="card">
-      <img
-        class="card__image"
-        src="${product.image}"
-        alt="${product.alt}"
-      />
-      <p class="card__skin-type">${product.skinType}</p>
-      <h2 class="card__product-name">${product.name}</h2>
-      <p class="card__description">
-        ${product.description}
-      </p>
-      <span class="card__compound-list">Состав:</span>
-      <ul class="card__compound-text">
-        ${compoundItems}
-      </ul>
-      <div class="card__price-line">
-        <span class="card__price">Цена:</span>
-        <span class="card__price-value">${formattedPrice} ₽</span>
-      </div>
-    </li>
-  `;
+  return clone; // Возвращаем весь фрагмент
 };
 
 const renderCards = (productsToRender) => {
-  const container = document.querySelector(".products");
+  const container = document.getElementById("products-container");
 
   if (!container) {
     console.error("Контейнер для карточек не найден");
     return;
   }
 
+  // Очищаем контейнер
   container.innerHTML = "";
 
+  // Добавляем карточки
   productsToRender.forEach((product) => {
-    container.innerHTML += createCardHTML(product);
+    const cardFragment = createCardFromTemplate(product);
+    container.appendChild(cardFragment);
   });
 };
 
@@ -101,4 +110,9 @@ const init = () => {
 
 document.addEventListener("DOMContentLoaded", init);
 
-export { askCardCount, createCardHTML, renderCards, getProductDescriptionMap };
+export {
+  askCardCount,
+  createCardFromTemplate,
+  renderCards,
+  getProductDescriptionMap,
+};
