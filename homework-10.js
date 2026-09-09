@@ -1,12 +1,8 @@
 import { products } from "./products-data.js";
 
 const askCardCount = () => {
-  let userInput;
-  let isValid = false;
-  let count = 0;
-
-  while (!isValid) {
-    userInput = prompt("Сколько карточек отобразить? От 1 до 5");
+  while (true) {
+    const userInput = prompt("Сколько карточек отобразить? От 1 до 5");
 
     if (userInput === null) {
       return 0;
@@ -15,14 +11,11 @@ const askCardCount = () => {
     const parsed = Number(userInput);
 
     if (Number.isInteger(parsed) && parsed >= 1 && parsed <= 5) {
-      isValid = true;
-      count = parsed;
-    } else {
-      alert("Пожалуйста, введите число от 1 до 5");
+      return parsed;
     }
-  }
 
-  return count;
+    alert("Пожалуйста, введите число от 1 до 5");
+  }
 };
 
 // Функция для создания карточки из шаблона
@@ -30,15 +23,15 @@ const createCardFromTemplate = (product) => {
   // Находим шаблон
   const template = document.getElementById("product-card-template");
   // Клонируем его содержимое
-  const clone = document.importNode(template.content, true);
+  const templateClone = document.importNode(template.content, true);
 
   // Находим элементы внутри клона
-  const image = clone.querySelector(".card__image");
-  const skinType = clone.querySelector(".card__skin-type");
-  const productName = clone.querySelector(".card__product-name");
-  const description = clone.querySelector(".card__description");
-  const compoundList = clone.querySelector(".card__compound-text");
-  const priceValue = clone.querySelector(".card__price-value");
+  const image = templateClone.querySelector(".card__image");
+  const skinType = templateClone.querySelector(".card__skin-type");
+  const productName = templateClone.querySelector(".card__product-name");
+  const description = templateClone.querySelector(".card__description");
+  const compoundList = templateClone.querySelector(".card__compound-list");
+  const priceValue = templateClone.querySelector(".card__price-value");
 
   // Заполняем данными
   image.src = product.image;
@@ -59,7 +52,7 @@ const createCardFromTemplate = (product) => {
   const formattedPrice = product.price.toLocaleString("ru-RU");
   priceValue.textContent = `${formattedPrice} ₽`;
 
-  return clone; // Возвращаем весь фрагмент
+  return templateClone; // Возвращаем весь фрагмент
 };
 
 const renderCards = (productsToRender) => {
@@ -108,7 +101,7 @@ const init = () => {
   });
 };
 
-document.addEventListener("DOMContentLoaded", init);
+init();
 
 export {
   askCardCount,
