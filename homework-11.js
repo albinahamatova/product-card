@@ -1,4 +1,3 @@
-// ====== 1. ЛОГИКА ДЛЯ ФОРМЫ ПОДПИСКИ В ФУТЕРЕ ======
 const subscribeForm = document.getElementById("subscribe-form");
 const subscribeEmail = document.getElementById("subscribe-email");
 
@@ -18,13 +17,11 @@ if (subscribeForm) {
   });
 }
 
-// ====== 2. ЛОГИКА МОДАЛЬНОГО ОКНА ======
 const registerBtn = document.querySelector(".button-register");
 const modal = document.getElementById("registerModal");
 const overlay = document.getElementById("modalOverlay");
 const closeBtn = document.getElementById("modalClose");
 
-// Функция открытия модалки
 function openModal() {
   modal.classList.add("modal-showed");
   overlay.classList.add("modal-overlay-showed");
@@ -32,7 +29,6 @@ function openModal() {
   document.body.style.overflow = "hidden";
 }
 
-// Функция закрытия модалки
 function closeModal() {
   modal.classList.remove("modal-showed");
   overlay.classList.remove("modal-overlay-showed");
@@ -57,7 +53,6 @@ if (overlay) {
   overlay.addEventListener("click", closeModal);
 }
 
-// ====== 3. ЛОГИКА ФОРМЫ РЕГИСТРАЦИИ ======
 const registerForm = document.getElementById("register-form");
 let user = null; // Внешняя переменная
 
@@ -65,7 +60,6 @@ if (registerForm) {
   registerForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Получаем значения всех полей
     const firstName = document.getElementById("firstName").value.trim();
     const surName = document.getElementById("surName").value.trim();
     const birthday = document.getElementById("birthday").value;
@@ -73,33 +67,28 @@ if (registerForm) {
     const password = document.getElementById("password").value;
     const repeatPassword = document.getElementById("repeatPassword").value;
 
-    // Проверяем валидность формы
     if (!registerForm.checkValidity()) {
       alert("Пожалуйста, заполните все поля корректно!");
       return;
     }
 
-    // Проверяем совпадение паролей
     if (password !== repeatPassword) {
       alert("Пароли не совпадают! Регистрация отклонена.");
       return;
     }
 
-    // Если всё ок - создаем объект user
     user = {
       firstName: firstName,
       surName: surName,
       birthday: birthday,
       login: login,
       password: password,
-      createdOn: new Date(), // Добавляем время создания
+      createdOn: new Date(),
     };
 
-    // Выводим в консоль
     console.log("Регистрация успешна!");
     console.log(user);
 
-    // Закрываем модалку
     closeModal();
   });
 }
