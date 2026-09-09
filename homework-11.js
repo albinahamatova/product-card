@@ -6,13 +6,13 @@ if (subscribeForm) {
     e.preventDefault(); // Отменяем отправку формы
 
     // Проверяем валидность email
-    if (subscribeEmail.checkValidity()) {
+    if (subscribeForm.checkValidity()) {
       // Если валидный - выводим в консоль
       console.log({ email: subscribeEmail.value });
       subscribeForm.reset(); // Очищаем форму
     } else {
       // Если невалидный - показываем ошибку
-      subscribeEmail.reportValidity();
+      subscribeForm.reportValidity();
     }
   });
 }
@@ -32,10 +32,7 @@ function openModal() {
 function closeModal() {
   modal.classList.remove("modal-showed");
   overlay.classList.remove("modal-overlay-showed");
-  document.body.style.overflow = "auto";
-  // Очищаем форму
-  const registerForm = document.getElementById("register-form");
-  if (registerForm) registerForm.reset();
+  document.body.style.overflow = "";
 }
 
 // Открытие по кнопке
@@ -82,13 +79,13 @@ if (registerForm) {
       surName: surName,
       birthday: birthday,
       login: login,
-      password: password,
       createdOn: new Date(),
     };
 
     console.log("Регистрация успешна!");
     console.log(user);
 
+    registerForm.reset();
     closeModal();
   });
 }
