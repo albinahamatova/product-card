@@ -26,6 +26,7 @@
           <a href="#">Контакты</a>
         </nav>
         <button class="button-cart">Корзина</button>
+        <button class="button-register">Регистрация</button>
       </div>
     </header>
 
@@ -39,12 +40,121 @@
       </button>
       <button id="open-google">Открыть Google</button>
       <button id="output-console-log">Вывести сообщение в консоль лог</button>
-      <ul class="products clear-list" id="products-list"></ul>
+      <ul
+        class="products products-row-1 clear-list"
+        id="products-container"
+      ></ul>
     </div>
+
+    <template id="product-card-template">
+      <li class="card">
+        <img class="card__image" src="" alt="" />
+        <p class="card__skin-type"></p>
+        <h2 class="card__product-name"></h2>
+        <p class="card__description"></p>
+        <span class="card__compound-list">Состав:</span>
+        <ul class="card__compound-text"></ul>
+        <div class="card__price-line">
+          <span class="card__price">Цена:</span>
+          <span class="card__price-value"></span>
+        </div>
+      </li>
+    </template>
+
     <script src="main.js"></script>
     <script src="homework-7.js"></script>
     <script src="homework-8.js"></script>
     <script type="module" src="homework-9.js"></script>
     <script type="module" src="homework-10.js"></script>
+    <script type="module" src="homework-11.js"></script>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <nav class="footer-nav">
+          <a href="#">Главная</a>
+          <a href="#">Каталог</a>
+          <a href="#">О нас</a>
+          <a href="#">Контакты</a>
+        </nav>
+        <div class="footer-subscribe">
+          <p class="subscribe-title">Подпишитесь на наши новости</p>
+          <form id="subscribe-form" class="subscribe-form">
+            <input
+              type="email"
+              id="subscribe-email"
+              placeholder="Введите ваш email"
+              required
+            />
+            <button type="submit">Подписаться</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <h2>Регистрация</h2>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="firstName">Имя</label>
+            <input
+              type="text"
+              id="firstName"
+              placeholder="Введите имя"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="surName">Фамилия</label>
+            <input
+              type="text"
+              id="surName"
+              placeholder="Введите фамилию"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="birthday">Дата рождения</label>
+            <input
+              type="date"
+              id="birthday"
+              placeholder="Введите дату рождения"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="login">Логин</label>
+            <input
+              type="text"
+              id="login"
+              placeholder="Введите логин"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Пароль</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Введите пароль"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="repeatPassword">Повтор пароля</label>
+            <input
+              type="password"
+              id="repeatPassword"
+              placeholder="Повторите пароль"
+              required
+            />
+          </div>
+
+          <button type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
