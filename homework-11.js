@@ -1,70 +1,33 @@
-const subscribeForm = document.getElementById("subscribe-form");
-const subscribeEmail = document.getElementById("subscribe-email");
+import { Modal } from "./modal.js";
+import { Form } from "./form.js";
 
-if (subscribeForm) {
-  subscribeForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // Отменяем отправку формы
+// ====== 1. Форма подписки в футере ======
+const subscribeForm = new Form("subscribe-form");
 
-    // Проверяем валидность email
-    if (subscribeForm.checkValidity()) {
-      // Если валидный - выводим в консоль
-      console.log({ email: subscribeEmail.value });
-      subscribeForm.reset(); // Очищаем форму
+if (subscribeForm.formElement) {
+  subscribeForm.onSubmit((values) => {
+    if (subscribeForm.isValid()) {
+      console.log({ email: values["subscribe-email"] });
+      subscribeForm.reset();
     } else {
-      // Если невалидный - показываем ошибку
-      subscribeForm.reportValidity();
+      subscribeForm.formElement.reportValidity();
     }
   });
 }
 
-const registerBtn = document.querySelector(".button-register");
-const modal = document.getElementById("registerModal");
-const overlay = document.getElementById("modalOverlay");
-const closeBtn = document.getElementById("modalClose");
+const registerModal = new Modal("registerModal");
+const registerForm = new Form("register-form");
 
-function openModal() {
-  modal.classList.add("modal-showed");
-  overlay.classList.add("modal-overlay-showed");
-  // Запрещаем прокрутку страницы
-  document.body.style.overflow = "hidden";
-}
+let user = null;
 
-function closeModal() {
-  modal.classList.remove("modal-showed");
-  overlay.classList.remove("modal-overlay-showed");
-  document.body.style.overflow = "";
-}
+registerModal.setOpenTrigger(".button-register");
 
-// Открытие по кнопке
-if (registerBtn) {
-  registerBtn.addEventListener("click", openModal);
-}
-
-// Закрытие по крестику
-if (closeBtn) {
-  closeBtn.addEventListener("click", closeModal);
-}
-
-// Закрытие по клику на overlay
-if (overlay) {
-  overlay.addEventListener("click", closeModal);
-}
-
-const registerForm = document.getElementById("register-form");
-let user = null; // Внешняя переменная
-
-if (registerForm) {
-  registerForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const firstName = document.getElementById("firstName").value.trim();
-    const surName = document.getElementById("surName").value.trim();
-    const birthday = document.getElementById("birthday").value;
-    const login = document.getElementById("login").value.trim();
+if (registerForm.formElement) {
+  registerForm.onSubmit((values) => {
     const password = document.getElementById("password").value;
     const repeatPassword = document.getElementById("repeatPassword").value;
 
-    if (!registerForm.checkValidity()) {
+    if (!registerForm.isValid()) {
       alert("Пожалуйста, заполните все поля корректно!");
       return;
     }
@@ -75,10 +38,9 @@ if (registerForm) {
     }
 
     user = {
-      firstName: firstName,
-      surName: surName,
-      birthday: birthday,
-      login: login,
+      firstName: values.firstName,
+      birthday: values.birthday,
+      login: values.login,
       createdOn: new Date(),
     };
 
@@ -86,6 +48,14 @@ if (registerForm) {
     console.log(user);
 
     registerForm.reset();
-    closeModal();
+    registerModal.close();
   });
 }
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && registerModal.isOpen()) {
+    registerModal.close();
+  }
+});
+
+export { registerModal, registerForm, user };
