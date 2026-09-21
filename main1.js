@@ -40,7 +40,7 @@ class SkincareProduct extends Product {
 
 class MakeupProduct extends Product {
   constructor(name, brand, price, shade, finish) {
-    super(name, price, brand);
+    super(name, brand, price);
     this.shade = shade;
     this.finish = finish;
   }
@@ -50,18 +50,17 @@ class MakeupProduct extends Product {
   }
 }
 
-// ====== Пример использования ======
 const moisturizer = new SkincareProduct(
   "Увлажняющий мусс",
-  2750,
   "Invisible Symphony",
+  2750,
   "нормальной кожи",
 );
 
 const lipstick = new MakeupProduct(
   "Помада",
-  1500,
   "Clinique",
+  1500,
   "Красный",
   "матовый",
 );

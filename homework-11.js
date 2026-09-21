@@ -1,7 +1,6 @@
 import { Modal } from "./modal.js";
 import { Form } from "./form.js";
 
-// ====== 1. Форма подписки в футере ======
 const subscribeForm = new Form("subscribe-form");
 
 if (subscribeForm.formElement) {
@@ -24,11 +23,16 @@ registerModal.setOpenTrigger(".button-register");
 
 if (registerForm.formElement) {
   registerForm.onSubmit((values) => {
+    if (!registerForm.isValid()) {
+      reportvalidity("Пожалуйста, заполните все поля корректно!");
+      return;
+    }
+
     const password = document.getElementById("password").value;
     const repeatPassword = document.getElementById("repeatPassword").value;
 
     if (!registerForm.isValid()) {
-      alert("Пожалуйста, заполните все поля корректно!");
+      reportvalidity("Пожалуйста, заполните все поля корректно!");
       return;
     }
 

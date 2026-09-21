@@ -9,7 +9,7 @@ class Modal {
       return;
     }
 
-    this._setupCloseListener();
+    this.#setupCloseListener();
   }
 
   open() {
@@ -32,7 +32,7 @@ class Modal {
     return this.modalElement.classList.contains("modal-showed");
   }
 
-  _setupCloseListener() {
+  #setupCloseListener() {
     if (this.closeButton) {
       this.closeButton.addEventListener("click", () => {
         this.close();
